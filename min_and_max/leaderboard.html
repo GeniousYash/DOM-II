@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .min{
+            border: 2px solid black;
+            width:200px;
+            height: 50px;
+        }
+        .max{
+            border: 2px solid black;
+            width:200px;
+            height: 50px;
+            margin-top: 20px;
+        }
+        .screen{
+            border: 2px solid black;
+            width:200px;
+            height: 50px;
+            margin-top: 20px;
+        }
+        .container{
+            width: 700px;
+            display: grid;
+            margin-top: 40px;
+            grid-template-columns: repeat(5,1fr);
+            grid-template-rows: repeat(2,1fr);
+            gap: 10px;
+            
+        }
+        .container>button{
+            display: flex;
+            width:100px;
+            height:100px;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            font-weight: bolder;
+            background-color: grey;
+            color: white;
+        }
+        .submit{
+            width: 150px;
+            height: 70px;
+            font-size: 40px;
+            margin-top: 50px;
+            margin-left: 200px;
+        }
+        .cancle{
+            width: 150px;
+            height: 70px;
+            font-size: 40px;
+            margin-top: 50px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div class="min">40</div>
+        <div class="max">120</div>
+        <div class="screen"></div>
+        <div class="container">
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button>0</button>
+        </div>
+        <button class="submit">Submit</button>
+        <button class="delete">Cancle</button>
+    </div>
+</body>
+</html>
+
+<script>
+    let keys=document.querySelectorAll(".container>button");
+    let bag="";
+    keys.forEach(function(el){
+        el.addEventListener("click",myFun);
+    })
+
+    function myFun(event){
+        bag+= event.target.innerText;
+        document.querySelector(".screen").innerText = bag;
+    }
+
+    document.querySelector(".submit").addEventListener("click",workFun);
+    function workFun(){
+        let input=document.querySelector(".screen").innerText;
+        let maxi=document.querySelector(".max").innerText;
+        let mini=document.querySelector(".min").innerText;
+        if(Number(input)>Number(maxi)){
+            document.querySelector(".max").innerText=input;
+        }else if(Number(input)<Number(mini)){
+            document.querySelector(".min").innerText=input;
+        }
+        bag=""
+    }
+    
+    document.querySelector(".delete").addEventListener("click",canFun);
+    function canFun(){
+        event.target.screen.remove();
+    }
+</script>
