@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <style>
+        .div{
+            margin: auto;
+            margin-top: 10rem;
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .con{
+            margin: 10px auto;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+        button{
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="div">
+        <h1 class="screen">Display Your BMI here</h1>
+        <h2 class="type">BMI Type</h2>
+        <div class="con">
+            <label for="weight">Weight (in kg)</label>
+            <input id="weight" type="number" placeholder="Your Body Weight">
+        </div>
+        <div class="con">
+            <label for="weight">Height (in m)</label>
+            <input id="height" type="number" placeholder="Your Height">
+        </div>
+        <button onclick="display()">Check BMI</button>
+    </div>
+    <script>
+        let displayhere = document.querySelector(".screen");
+        let BMIType = document.querySelector(".type");
+        function display(){
+            let w = document.querySelector("#weight").value;
+            let h = document.querySelector("#height").value;
+
+            console.log(w,h)
+            let bmi = +w / (h**2);
+            displayhere.innerText = bmi;
+
+            if(bmi <= 18.4){
+                BMIType.innerText = "Under Weight";
+            }
+            else if(bmi >= 18.5 && bmi <= 24.9){
+                BMIType.innerText = "Normal Weight";
+            }
+            else if(bmi >= 25 && bmi <= 29.9){
+                BMIType.innerText = "Over Weight";
+            }
+            else if(bmi >= 30){
+                BMIType.innerText = "Obese";
+            }
+        }
+    </script>
+</body>
+</html>
